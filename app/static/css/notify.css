@@ -1,0 +1,218 @@
+#cow-toasts {
+    position: fixed;
+    top: 88px;
+    right: 20px;
+    z-index: 99990;
+    /* debajo de la vaca del cursor (99999) */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none;
+}
+
+.cow-toast {
+    position: relative;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 340px;
+    max-width: calc(100vw - 40px);
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: #fff;
+    color: #1f2933;
+    border: 2px solid;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    animation: toastIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.dark .cow-toast {
+    background: #1a232e;
+    color: #f3f4f6;
+}
+
+.cow-toast.success {
+    border-color: #22c55e;
+}
+
+.cow-toast.error {
+    border-color: #ef4444;
+}
+
+.cow-toast.out {
+    animation: toastOut 0.3s ease-in forwards;
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(120%) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes toastOut {
+    to {
+        opacity: 0;
+        transform: translateX(120%);
+    }
+}
+
+.cow-toast-face {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+}
+
+.cow-toast.success .cow-toast-face {
+    animation: cowJump 0.7s 0.3s ease-out 2;
+}
+
+.cow-toast.error .cow-toast-face {
+    animation: cowShake 0.5s 0.3s ease-in-out 2;
+}
+
+@keyframes cowJump {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(-6deg);
+    }
+}
+
+@keyframes cowShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px) rotate(-4deg);
+    }
+
+    75% {
+        transform: translateX(5px) rotate(4deg);
+    }
+}
+
+.cow-tear {
+    animation: tearFall 1.4s 0.6s ease-in infinite;
+    transform-box: fill-box;
+}
+
+@keyframes tearFall {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(14px);
+        opacity: 0;
+    }
+}
+
+.cow-toast-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.cow-toast-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0 0 2px;
+}
+
+.cow-toast.success .cow-toast-title {
+    color: #16a34a;
+}
+
+.cow-toast.error .cow-toast-title {
+    color: #dc2626;
+}
+
+.dark .cow-toast.success .cow-toast-title {
+    color: #22c55e;
+}
+
+.dark .cow-toast.error .cow-toast-title {
+    color: #f87171;
+}
+
+.cow-toast-msg {
+    font-size: 12.5px;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.85;
+}
+
+.cow-toast-close {
+    align-self: flex-start;
+    background: none;
+    border: 0;
+    font-size: 20px;
+    line-height: 1;
+    color: inherit;
+    opacity: 0.5;
+    padding: 0 2px;
+}
+
+.cow-toast-close:hover {
+    opacity: 1;
+}
+
+.cow-toast-bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    transform-origin: left;
+    animation: toastBar linear forwards;
+}
+
+.cow-toast.success .cow-toast-bar {
+    background: #22c55e;
+}
+
+.cow-toast.error .cow-toast-bar {
+    background: #ef4444;
+}
+
+@keyframes toastBar {
+    to {
+        transform: scaleX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .cow-toast,
+    .cow-toast-face,
+    .cow-tear {
+        animation: none;
+    }
+}
+
+@media (max-width: 640px) {
+    #cow-toasts {
+        top: 76px;
+        right: 12px;
+        left: 12px;
+    }
+
+    .cow-toast {
+        width: auto;
+    }
+}

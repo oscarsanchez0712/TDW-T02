@@ -1,0 +1,59 @@
+@media (hover: hover) and (pointer: fine) {
+
+    body,
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    [role="button"] {
+        cursor: none;
+    }
+
+    #chatbot-container,
+    #chatbot-container * {
+        cursor: none !important;
+    }
+
+    .cursor-cow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 99999;
+        font-size: 32px;
+        line-height: 1;
+        opacity: 0;
+        transition: opacity 0.3s;
+        user-select: none;
+    }
+
+    .cursor-cow span {
+        display: inline-block;
+        transition: transform 0.2s;
+    }
+
+    .cursor-cow.is-hover span {
+        transform: scale(1.6) rotate(-10deg);
+    }
+
+    .cursor-cow.is-down span {
+        transform: scale(0.8);
+    }
+
+    .cursor-visible .cursor-cow {
+        opacity: 1;
+    }
+}
+
+.milk-drop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99998;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid rgba(120, 140, 160, 0.35);
+    box-shadow: inset -2px -2px 3px rgba(150, 170, 190, 0.25);
+}

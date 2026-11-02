@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %} Don Lorenzo {% endblock %}</title>
+  <meta name="description" content="Don Lorenzo: quesos, mantequilla y derivados lácteos de altura de Samán, Azángaro (Puno). Cotizaciones para mayoristas, distribuidores y programas sociales." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧀</text></svg>" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @custom-variant dark (&:where(.dark, .dark *));
+  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/cursor.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/notify.css') }}">
+</head>
+
+<body class="bg-[#F5F0D8] text-[#1F2933] dark:bg-[#12181f] dark:text-[#f3f4f6] transition-colors duration-300">
+
+  <header
+    class="bg-[#F5F0D8] border-b border-[#D8D1B5] dark:bg-[#1a232e] dark:border-[#2d3748] transition-colors duration-300">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="{{ url_for('inicio') }}" class="flex items-center gap-3">
+        <div
+          class="w-12 h-12 rounded-full bg-[#164E3A] flex items-center justify-center text-white font-bold text-xl shadow select-none">🧀</div>
+
+        <div>
+          <h1 class="font-bold text-[#002B3A] dark:text-white text-lg transition-colors">Don Lorenzo</h1>
+          <p class="text-xs text-gray-500 dark:text-gray-400" data-i18n="subtitle">
+            Productos lácteos de altura
+          </p>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="{{ url_for('inicio') }}" class="hover:text-[#C89B3C] transition" data-i18n="nav_inicio">Inicio</a>
+        <a href="{{ url_for('contacto') }}" class="hover:text-[#C89B3C] transition"
+          data-i18n="nav_contacto">Contacto</a>
+
+        <button id="btn-theme"
+          class="px-3 py-1.5 rounded-lg border border-gray-400 dark:border-gray-600 text-xs flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+          <span id="theme-icon">🌙</span>
+          <span id="theme-text" data-i18n="theme_dark">Oscuro</span>
+        </button>
+
+        <button id="lang-toggle"
+          class="px-3 py-1.5 rounded-lg border border-gray-400 dark:border-gray-600 text-xs font-semibold hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+          🇺🇸 EN
+        </button>
+      </div>
+
+      <button id="menu-button" aria-label="Abrir menú"
+        class="md:hidden text-2xl text-[#002B3A] dark:text-white">☰</button>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-6 pt-2 border-t border-[#D8D1B5] dark:border-[#2d3748]">
+      <div class="flex flex-col gap-3 font-medium">
+        <a href="{{ url_for('inicio') }}" class="py-1 hover:text-[#C89B3C]" data-i18n="nav_inicio">Inicio</a>
+        <a href="{{ url_for('contacto') }}" class="py-1 hover:text-[#C89B3C]" data-i18n="nav_contacto">Contacto</a>
+
+        <div class="flex items-center gap-4 pt-3 border-t border-gray-300 dark:border-gray-700 mt-2">
+          <button id="btn-theme-mobile"
+            class="px-3 py-1.5 rounded-lg border border-gray-400 dark:border-gray-600 text-xs flex items-center gap-2">
+            <span>🌙</span>
+            <span data-i18n="theme_dark">Oscuro</span>
+          </button>
+          <button id="lang-toggle-mobile"
+            class="px-3 py-1.5 rounded-lg border border-gray-400 dark:border-gray-600 text-xs font-semibold">
+            🇺🇸 EN
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>{% block content %} {% endblock %}</main>
+
+  <div id="chatbot-container" class="fixed bottom-6 left-6 z-50 flex flex-col items-start font-sans">
+    <div id="chatbot-window"
+      class="hidden mb-4 w-80 sm:w-96 rounded-2xl bg-white dark:bg-[#1a232e] shadow-2xl border border-gray-200 dark:border-gray-800 overflow-hidden transition-all duration-300">
+      <div
+        class="bg-[#002B3A] dark:bg-[#0a121d] p-4 text-white flex items-center justify-between border-b border-gray-700">
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <div class="w-9 h-9 rounded-full bg-[#C89B3C] flex items-center justify-center font-bold text-[#002B3A]">
+              🤖
+            </div>
+            <span
+              class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-[#002B3A]"></span>
+          </div>
+          <div>
+            <h3 class="font-bold text-sm leading-none" data-i18n="chat_header_title">Asistente Don Lorenzo</h3>
+            <span class="text-[10px] text-gray-300" data-i18n="chat_header_status">En línea | Consultas y
+              Cotizaciones</span>
+          </div>
+        </div>
+        <button id="chatbot-close-btn" class="text-gray-300 hover:text-white text-xl font-bold px-2">&times;</button>
+      </div>
+
+      <div id="chatbot-messages" class="p-4 h-72 overflow-y-auto space-y-3 bg-gray-50 dark:bg-[#0f172a] text-xs">
+        <div class="flex items-start gap-2">
+          <div
+            class="bg-white dark:bg-[#1a232e] text-gray-800 dark:text-gray-200 p-3 rounded-2xl rounded-tl-none border border-gray-200 dark:border-gray-800 max-w-[85%] shadow-sm"
+            data-i18n="chat_welcome_msg">
+            👋 ¡Hola! Bienvenido a Don Lorenzo. ¿En qué te puedo ayudar hoy? ¿Buscas cotizar nuestros quesos o conocer
+            puntos de despacho?
+          </div>
+        </div>
+      </div>
+
+      <form id="chatbot-form"
+        class="p-3 bg-white dark:bg-[#1a232e] border-t border-gray-200 dark:border-gray-800 flex gap-2">
+        <input type="text" id="chatbot-input" data-i18n-placeholder="chat_placeholder"
+          placeholder="Escribe tu consulta..." required
+          class="flex-1 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#0f172a] px-3 py-2 text-xs text-gray-900 dark:text-white focus:outline-none focus:border-[#C89B3C]" />
+        <button type="submit" data-i18n="chat_send"
+          class="bg-[#C89B3C] hover:bg-yellow-400 text-[#002B3A] font-bold px-3 py-2 rounded-lg transition text-xs">
+          Enviar
+        </button>
+      </form>
+    </div>
+
+    <button id="chatbot-toggle-btn" aria-label="Abrir Chat"
+      class="flex items-center gap-2 bg-[#002B3A] hover:bg-[#003c52] text-white p-3.5 rounded-full shadow-2xl transition-transform hover:scale-105 border-2 border-[#C89B3C]">
+      <span class="text-2xl leading-none">💬</span>
+      <span class="text-xs font-semibold hidden md:inline-block pr-1" data-i18n="chat_btn">¿Consultas?</span>
+    </button>
+
+    <div id="cow-bot" aria-hidden="true">
+      <div class="bot-bubble">¡Muuu! ¿Te ayudo? 🐄</div>
+      <svg class="bot-svg" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
+        <rect x="36" y="134" width="20" height="13" rx="5" fill="#7c3f12" />
+        <rect x="64" y="134" width="20" height="13" rx="5" fill="#7c3f12" />
+        <rect x="16" y="96" width="12" height="32" rx="6" fill="#cbd5e1" stroke="#334155" stroke-width="2.5" />
+        <clipPath id="vest">
+          <rect x="30" y="86" width="60" height="50" rx="14" />
+        </clipPath>
+        <rect x="30" y="86" width="60" height="50" rx="14" fill="#fff" stroke="#1f2933" stroke-width="3" />
+        <g clip-path="url(#vest)" fill="#1f2933">
+          <ellipse cx="42" cy="108" rx="9" ry="7" />
+          <ellipse cx="80" cy="98" rx="8" ry="10" />
+          <ellipse cx="64" cy="132" rx="9" ry="6" />
+          <ellipse cx="38" cy="130" rx="6" ry="5" />
+        </g>
+        <path d="M42 85 L78 85 L60 106 Z" fill="#dc2626" stroke="#7f1d1d" stroke-width="2" />
+        <circle cx="54" cy="91" r="1.5" fill="#fff" />
+        <circle cx="62" cy="93" r="1.5" fill="#fff" />
+        <circle cx="68" cy="89" r="1.5" fill="#fff" />
+        <polygon fill="#fbbf24" stroke="#92400e" stroke-width="1"
+          points="76,111 77.8,115.6 82.7,115.8 78.9,118.9 80.1,123.7 76,121 71.9,123.7 73.2,118.9 69.3,115.8 74.2,115.6" />
+        <rect x="28" y="38" width="64" height="48" rx="16" fill="#f1f5f9" stroke="#334155" stroke-width="3" />
+        <circle class="bot-eye" cx="47" cy="63" r="6" fill="#0f172a" />
+        <circle class="bot-eye" cx="73" cy="63" r="6" fill="#0f172a" />
+        <circle cx="49" cy="61" r="2" fill="#fff" />
+        <circle cx="75" cy="61" r="2" fill="#fff" />
+        <circle cx="38" cy="73" r="4" fill="#fda4af" opacity=".7" />
+        <circle cx="82" cy="73" r="4" fill="#fda4af" opacity=".7" />
+        <path d="M50 72 q10 9 20 0" fill="none" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
+        <ellipse cx="60" cy="40" rx="44" ry="9" fill="#fff" stroke="#1f2933" stroke-width="3" />
+        <path d="M38 38 Q38 10 60 10 Q82 10 82 38 Z" fill="#fff" stroke="#1f2933" stroke-width="3" />
+        <ellipse cx="50" cy="22" rx="6" ry="5" fill="#1f2933" />
+        <ellipse cx="70" cy="18" rx="5" ry="6" fill="#1f2933" />
+        <rect x="38" y="31" width="44" height="7" fill="#7c3f12" />
+        <ellipse cx="20" cy="42" rx="6" ry="3" fill="#1f2933" />
+        <ellipse cx="100" cy="41" rx="6" ry="3" fill="#1f2933" />
+        <g class="bot-arm">
+          <rect x="90" y="94" width="12" height="32" rx="6" fill="#cbd5e1" stroke="#334155" stroke-width="2.5" />
+        </g>
+      </svg>
+    </div>
+
+  </div>
+
+  <div id="btnVolverArriba"
+    class="fixed bottom-6 right-6 z-50 transition-all duration-300 opacity-0 pointer-events-none transform translate-y-10 scale-90">
+    <button title="Volver arriba" aria-label="Volver arriba"
+      class="relative flex items-center justify-center w-14 h-14 rounded-full bg-white dark:bg-[#1a232e] text-[#164E3A] dark:text-[#C89B3C] shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group focus:outline-none">
+      <svg class="absolute w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+        <path class="text-gray-200 dark:text-gray-700" stroke-width="3" stroke="currentColor" fill="none"
+          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+        <path id="progresoScroll" class="text-[#164E3A] dark:text-[#C89B3C] transition-all duration-100 ease-out"
+          stroke-dasharray="0, 100" stroke-width="3" stroke-linecap="round" stroke="currentColor" fill="none"
+          d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+      </svg>
+      <svg class="w-6 h-6 transition-transform duration-300 group-hover:-translate-y-1" fill="none"
+        stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+      </svg>
+    </button>
+  </div>
+
+  <footer class="bg-[#002B3A] text-white">
+    <div class="max-w-7xl mx-auto px-6 py-10">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold">Don Lorenzo</h3>
+          <p class="text-sm text-gray-300 mt-3" data-i18n="footer_desc">
+            Productos lácteos elaborados con leche fresca proveniente de las familias ganaderas de Samán.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-semibold" data-i18n="footer_nav_title">Navegación</h4>
+          <div class="flex flex-col gap-2 mt-3 text-sm">
+            <a href="{{ url_for('inicio') }}" class="hover:text-[#C89B3C]" data-i18n="nav_inicio">Inicio</a>
+            <a href="{{ url_for('contacto') }}" class="hover:text-[#C89B3C]" data-i18n="nav_contacto">Contacto</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-semibold" data-i18n="footer_location_title">Ubicación</h4>
+          <p class="text-sm text-gray-300 mt-3">
+            Samán, Azángaro<br />
+            Puno, Perú
+          </p>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-600 mt-8 pt-5 text-center text-sm text-gray-400">
+        © 2026 AgroLact - Asociación de Productores Agropecuarios Don Lorenzo.
+      </div>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/theme.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/idioma.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/chatbot.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/cursor.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='js/notify.js') }}" defer></script>
+
+</body>

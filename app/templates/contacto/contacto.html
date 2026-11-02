@@ -1,0 +1,186 @@
+{% extends "base.html" %} 
+
+{% block title %}Contacto | Don Lorenzo{% endblock %}
+
+{% block content %}
+
+<section class="bg-[#002B3A] dark:bg-[#0a121d] px-6 py-12 text-white text-center transition-colors duration-300">
+  <h1 data-i18n="contact_hero_title" class="text-3xl font-bold md:text-5xl">Contacto y Pedidos</h1>
+  <p data-i18n="contact_hero_desc" class="mt-3 text-gray-300 text-sm md:text-base">
+    Atendemos cotizaciones para mayoristas, distribuidores y licitaciones públicas.
+  </p>
+</section>
+
+<section class="bg-[#F5F0D8] dark:bg-[#0f172a] px-6 py-16 transition-colors duration-300">
+  <div class="mx-auto max-w-7xl grid gap-12 lg:grid-cols-2">
+
+    <div class="flex flex-col justify-between rounded-2xl bg-white dark:bg-[#1a232e] p-8 shadow-md border border-gray-200 dark:border-gray-800">
+      <div>
+        <span data-i18n="contact_legal_tag" class="text-xs font-bold uppercase tracking-widest text-[#C89B3C]">
+          Información Legal
+        </span>
+        <h2 data-i18n="contact_legal_title" class="mt-2 text-2xl font-bold text-[#002B3A] dark:text-white">
+          Asociación de Productores Agropecuarios Don Lorenzo
+        </h2>
+        <p data-i18n="contact_legal_desc" class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-300">
+          Organización campesina formalizada y habilitada fiscalmente como emitidora electrónica e importadora/exportadora.
+        </p>
+
+        <div class="mt-8 space-y-4 text-sm text-gray-700 dark:text-gray-300">
+          <div class="flex items-start gap-3">
+            <span class="text-xl select-none">🧾</span>
+            <div data-i18n="contact_ruc"><strong>RUC:</strong> 20606101423 (Activo y Habido)</div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-xl select-none">📍</span>
+            <div data-i18n="contact_address">
+              <strong>Planta y Sede:</strong> Comunid. Llacta Cucho Puto Punco, Samán, Azángaro - Puno.
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-xl select-none">🚚</span>
+            <div data-i18n="contact_dispatch">
+              <strong>Despacho Logístico:</strong> Juliaca, Puno, Cusco y Arequipa.
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-xl select-none">🏛️</span>
+            <div data-i18n="contact_programs">
+              <strong>Programas Atendidos:</strong> Qali Warma y Vaso de Leche.
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <span class="text-xl select-none">🕒</span>
+            <div data-i18n="contact_hours">
+              <strong>Horario de Atención:</strong> Lunes a Sábado: 8:00 AM - 6:00 PM.
+            </div>
+          </div>
+        </div> 
+      </div>
+
+      <div class="mt-8 overflow-hidden rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3844.755!2d-70.0202106!3d-15.2933536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x916795c578f790b9%3A0xc4638c37f51601fb!2sDon%20Lorenzo%20%22La%20casa%20del%20queso%22!5e0!3m2!1ses!2spe!4v1700000000000!5m2!1ses!2spe"
+          class="w-full h-96 border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div> 
+
+    <div class="rounded-2xl bg-white dark:bg-[#1a232e] p-8 shadow-md border border-gray-200 dark:border-gray-800">
+      <h2 data-i18n="form_title" class="text-2xl font-bold text-[#002B3A] dark:text-white">Envíanos un mensaje</h2>
+      <p data-i18n="form_desc" class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+        Completa tus datos para enviarte nuestro catálogo de precios al por mayor.
+      </p>
+      
+      <form id="contact-form" class="mt-6 space-y-4" novalidate>
+
+        <div>
+          <label for="nombre" data-i18n="label_nombre" class="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+            Nombre Completo o Empresa
+          </label>
+          <input type="text" id="nombre" name="nombre" required maxlength="100" autocomplete="name" 
+            data-i18n-placeholder="placeholder_nombre"
+            placeholder="Ej. Juan Pérez / Distribuidora del Sur"
+            class="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] p-3 text-sm text-gray-900 dark:text-white focus:border-[#164E3A] dark:focus:border-[#C89B3C] focus:outline-none focus:ring-1 focus:ring-[#164E3A] dark:focus:ring-[#C89B3C]" />
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="correo" data-i18n="label_correo" class="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+              Correo Electrónico
+            </label>
+            <input type="email" id="correo" name="correo" required maxlength="120" autocomplete="email" 
+              data-i18n-placeholder="placeholder_correo"
+              placeholder="correo@ejemplo.com"
+              class="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] p-3 text-sm text-gray-900 dark:text-white focus:border-[#164E3A] dark:focus:border-[#C89B3C] focus:outline-none focus:ring-1 focus:ring-[#164E3A] dark:focus:ring-[#C89B3C]" />
+          </div>
+          <div>
+            <label for="telefono" data-i18n="label_telefono" class="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+              Teléfono / WhatsApp
+            </label>
+            <input type="tel" id="telefono" name="telefono" required inputmode="numeric" maxlength="9" autocomplete="tel-national" 
+              data-i18n-placeholder="placeholder_telefono"
+              placeholder="954321876"
+              class="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] p-3 text-sm text-gray-900 dark:text-white focus:border-[#164E3A] dark:focus:border-[#C89B3C] focus:outline-none focus:ring-1 focus:ring-[#164E3A] dark:focus:ring-[#C89B3C]" />
+          </div>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="producto" data-i18n="label_producto" class="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+              Producto de Interés
+            </label>
+            <select id="producto" name="producto"
+              class="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] p-3 text-sm text-gray-900 dark:text-white focus:border-[#164E3A] dark:focus:border-[#C89B3C] focus:outline-none focus:ring-1 focus:ring-[#164E3A] dark:focus:ring-[#C89B3C]">
+              <option value="Queso Paria" data-i18n="opt_paria">Queso Paria</option>
+              <option value="Queso Andino" data-i18n="opt_andino">Queso Andino</option>
+              <option value="Queso Gouda" data-i18n="opt_gouda">Queso Gouda</option>
+              <option value="Mantequilla" data-i18n="opt_mantequilla">Mantequilla Artesanal</option>
+              <option value="Yogurt" data-i18n="opt_yogurt">Yogurt Frutado</option>
+              <option value="Crema de Leche" data-i18n="opt_crema">Crema de Leche</option>
+              <option value="Varios" data-i18n="opt_varios">Varios / Todos</option>
+            </select>
+          </div>
+          <div>
+            <label for="comprador" data-i18n="label_comprador" class="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+              Tipo de Comprador
+            </label>
+            <select id="comprador" name="comprador"
+              class="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] p-3 text-sm text-gray-900 dark:text-white focus:border-[#164E3A] dark:focus:border-[#C89B3C] focus:outline-none focus:ring-1 focus:ring-[#164E3A] dark:focus:ring-[#C89B3C]">
+              <option value="Comerciante Mayorista" data-i18n="opt_buyer_wholesaler">Comerciante Mayorista</option>
+              <option value="Distribuidor" data-i18n="opt_buyer_distributor">Distribuidor Regional</option>
+              <option value="Programa Social" data-i18n="opt_buyer_social">Programa Social (Qali Warma / Vaso de Leche)</option>
+              <option value="Gourmet / Exportación" data-i18n="opt_buyer_export">Gourmet / Exportador</option>
+              <option value="Consumidor Final" data-i18n="opt_buyer_final">Consumidor Final</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label for="mensaje" data-i18n="label_mensaje" class="block text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
+            Mensaje o Detalle del Pedido
+          </label>
+          <textarea id="mensaje" name="mensaje" rows="4" required maxlength="500"
+            data-i18n-placeholder="placeholder_mensaje"
+            placeholder="Indícanos la cantidad estimada o consulta técnica..."
+            class="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#0f172a] p-3 text-sm text-gray-900 dark:text-white focus:border-[#164E3A] dark:focus:border-[#C89B3C] focus:outline-none focus:ring-1 focus:ring-[#164E3A] dark:focus:ring-[#C89B3C]"></textarea>
+          <p id="mensaje-contador" class="mt-1 text-right text-xs text-gray-500 dark:text-gray-400">0 / 500</p>
+        </div>
+
+        <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+          <label for="web">No llenar este campo</label>
+          <input type="text" id="web" name="web" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div>
+          <label class="flex items-start gap-2 text-xs text-gray-700 dark:text-gray-300 cursor-pointer">
+            <input type="checkbox" id="consentimiento" name="consentimiento" required
+              class="mt-0.5 h-4 w-4 rounded border-gray-300 accent-[#164E3A] dark:accent-[#C89B3C]" />
+            <span data-i18n="contact_consent">
+              Acepto que Don Lorenzo use mis datos para responder mi consulta (Ley N.° 29733, Protección de Datos Personales).
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" id="btn-enviar" data-i18n="btn_send_form"
+          class="w-full rounded-lg bg-[#C89B3C] py-3 disabled:cursor-not-allowed disabled:opacity-60 text-center font-bold text-[#002B3A] transition hover:bg-yellow-400 dark:bg-[#C89B3C] dark:hover:bg-yellow-300">
+          Enviar Consulta
+        </button>
+      </form>
+
+      <div id="form-response" data-i18n="form_success_msg"
+        class="mt-4 hidden rounded-lg bg-green-100 dark:bg-green-900/40 p-4 text-center text-xs font-semibold text-green-800 dark:text-green-300 border border-green-200 dark:border-green-800">
+        ¡Gracias por comunicarte con Don Lorenzo! Responderemos tu mensaje a la brevedad.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/contacto.js') }}"></script>
+
+{% endblock %}
