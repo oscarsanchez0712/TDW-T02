@@ -1,0 +1,231 @@
+#chatbot-window:not(.hidden) {
+    animation: chatOpen 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    transform-origin: bottom left;
+}
+
+@keyframes chatOpen {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.85);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Cabecera con degradado */
+#chatbot-window>div:first-child {
+    background: linear-gradient(135deg, #002b3a, #164e3a);
+}
+
+/* Fondo de mensajes con manchas de vaca muy suaves */
+#chatbot-messages {
+    background-image:
+        radial-gradient(ellipse 34px 24px at 12% 18%, rgba(120, 120, 120, 0.07) 98%, transparent),
+        radial-gradient(ellipse 28px 38px at 82% 48%, rgba(120, 120, 120, 0.07) 98%, transparent),
+        radial-gradient(ellipse 40px 26px at 30% 85%, rgba(120, 120, 120, 0.07) 98%, transparent);
+}
+
+/* Cada mensaje nuevo aparece con un "pop" */
+#chatbot-messages>* {
+    animation: msgPop 0.3s ease-out both;
+}
+
+@keyframes msgPop {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Botón del chat con pulso dorado (se detiene al abrir el chat) */
+#chatbot-toggle-btn {
+    animation: btnPulse 2.5s infinite;
+}
+
+#chatbot-window:not(.hidden)+#chatbot-toggle-btn {
+    animation: none;
+}
+
+@keyframes btnPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(200, 155, 60, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 14px rgba(200, 155, 60, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(200, 155, 60, 0);
+    }
+}
+
+/* ===== Robot vaquero ===== */
+#cow-bot {
+    position: absolute;
+    left: calc(100% + 8px);
+    /* siempre a la derecha del botón o de la ventana */
+    bottom: 0;
+    width: 100px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.bot-svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    filter: drop-shadow(0 6px 6px rgba(0, 0, 0, 0.25));
+    animation: botFloat 3s ease-in-out infinite;
+}
+
+@keyframes botFloat {
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.bot-eye {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: botBlink 4s infinite;
+}
+
+@keyframes botBlink {
+
+    0%,
+    92%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    96% {
+        transform: scaleY(0.1);
+    }
+}
+
+.bot-arm {
+    transform-origin: 96px 100px;
+    animation: botWave 1.6s ease-in-out infinite;
+}
+
+@keyframes botWave {
+
+    0%,
+    100% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(-55deg);
+    }
+}
+
+/* Globo de texto */
+.bot-bubble {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 4px;
+    transform: translateX(-30%);
+    white-space: nowrap;
+    background: #fff;
+    color: #1f2933;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 12px;
+    border: 2px solid #c89b3c;
+    animation: bubbleIn 0.5s 1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.bot-bubble::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 28px;
+    border: 6px solid transparent;
+    border-top-color: #c89b3c;
+}
+
+.dark .bot-bubble {
+    background: #1a232e;
+    color: #f3f4f6;
+}
+
+@keyframes bubbleIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30%) scale(0.6);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-30%) scale(1);
+    }
+}
+
+/* Al abrir el chat, el globo se esconde */
+#chatbot-window:not(.hidden)~#cow-bot .bot-bubble {
+    display: none;
+}
+
+/* En pantallas chicas no hay espacio para el robot */
+@media (max-width: 640px) {
+    #cow-bot {
+        display: none;
+    }
+}
+
+.typing-dots {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.typing-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #9ca3af;
+    animation: typingBounce 1.2s infinite;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    60%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    30% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+}
+
+#chatbot-messages {
+    scrollbar-width: none;
+}
+
+#chatbot-messages::-webkit-scrollbar {
+    display: none;
+}

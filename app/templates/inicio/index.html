@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+
+{% block title %}
+Don Lorenzo | Productos lácteos de altura
+{% endblock %}
+
+{% block content %}
+
+<section class="relative flex min-h-[550px] items-center justify-center overflow-hidden bg-[#002B3A] px-6">
+
+
+    <img id="carousel-img" src="{{ url_for('static', filename='img/slider1.jpg') }}"
+        data-img1="{{ url_for('static', filename='img/slider1.jpg') }}"
+        data-img2="{{ url_for('static', filename='img/slider2.jpg') }}"
+        data-img3="{{ url_for('static', filename='img/slider3.jpg') }}"
+        data-img4="{{ url_for('static', filename='img/slider4.jpg') }}" alt="Don Lorenzo - Productos Lácteos"
+        class="absolute inset-0 h-full w-full object-cover object-center opacity-30 transition-all duration-700 ease-in-out">
+
+    <div class="absolute inset-0 bg-black/30"></div>
+
+    <div class="relative z-10 mx-auto max-w-4xl text-center text-white py-16">
+        <h1 data-i18n="hero_title" class="mb-6 text-4xl font-bold leading-tight md:text-6xl">
+            Productos lácteos <span class="text-[#C89B3C]">de altura</span>
+        </h1>
+
+        <p data-i18n="hero_desc" class="mx-auto mb-8 max-w-2xl text-lg leading-8 text-gray-200">
+            Calidad, inocuidad y tradición derivados del acopio diario de leche fresca de más de 80 familias ganaderas
+            asociadas.
+        </p>
+
+        <div class="flex flex-col justify-center gap-4 sm:flex-row">
+            <a href="#destacados" data-i18n="btn_catalog"
+                class="rounded-lg bg-[#C89B3C] px-7 py-3 font-semibold text-[#002B3A] transition hover:scale-105 shadow-lg">
+                Ver catálogo
+            </a>
+            <a href="{{ url_for('contacto') }}" data-i18n="btn_contact"
+                class="rounded-lg border border-white px-7 py-3 font-semibold transition hover:bg-white hover:text-[#002B3A]">
+                Contáctanos
+            </a>
+        </div>
+    </div>
+
+    <button id="prev-slide" aria-label="Anterior"
+        class="absolute left-4 z-20 rounded-full bg-black/40 p-3 text-white transition hover:bg-black/70 focus:outline-none">
+        &#10094;
+    </button>
+    <button id="next-slide" aria-label="Siguiente"
+        class="absolute right-4 z-20 rounded-full bg-black/40 p-3 text-white transition hover:bg-black/70 focus:outline-none">
+        &#10095;
+    </button>
+
+    <div class="absolute bottom-4 z-20 flex gap-2">
+        <span class="dot h-3 w-8 rounded-full bg-white opacity-100 transition-all cursor-pointer"></span>
+        <span class="dot h-3 w-3 rounded-full bg-white opacity-50 transition-all cursor-pointer"></span>
+        <span class="dot h-3 w-3 rounded-full bg-white opacity-50 transition-all cursor-pointer"></span>
+        <span class="dot h-3 w-3 rounded-full bg-white opacity-50 transition-all cursor-pointer"></span>
+    </div>
+</section>
+
+<section class="bg-[#F5F0D8] dark:bg-[#12181f] px-6 py-20 transition-colors duration-300">
+    <div class="mx-auto max-w-7xl">
+        <div class="mb-12 text-center">
+            <p data-i18n="commitment_tag" class="font-semibold uppercase tracking-widest text-[#C89B3C]">Nuestro
+                compromiso</p>
+            <h2 data-i18n="commitment_title" class="mt-3 text-3xl font-bold text-[#002B3A] dark:text-white md:text-4xl">
+                Calidad desde el origen
+            </h2>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <article
+                class="rounded-xl bg-white dark:bg-[#1a232e] p-6 text-center shadow-md transition hover:-translate-y-2">
+                <div class="mb-4 text-4xl select-none">👨‍👩‍👧‍👦</div>
+                <h3 data-i18n="commitment_card1_title" class="mb-3 text-lg font-bold text-[#002B3A] dark:text-white">
+                    Más de 80 familias
+                </h3>
+                <p data-i18n="commitment_card1_desc" class="text-sm leading-6 text-gray-600 dark:text-gray-300">
+                    Articulamos el acopio diario garantizando un precio justo a nuestros ganaderos de Samán.
+                </p>
+            </article>
+
+            <article
+                class="rounded-xl bg-white dark:bg-[#1a232e] p-6 text-center shadow-md transition hover:-translate-y-2">
+                <div class="mb-4 text-4xl select-none">✅</div>
+                <h3 data-i18n="commitment_card2_title" class="mb-3 text-lg font-bold text-[#002B3A] dark:text-white">
+                    Calidad e inocuidad
+                </h3>
+                <p data-i18n="commitment_card2_desc" class="text-sm leading-6 text-gray-600 dark:text-gray-300">
+                    Procesamiento en planta equipada con tinas de acero inoxidable y pasteurizadoras.
+                </p>
+            </article>
+
+            <article
+                class="rounded-xl bg-white dark:bg-[#1a232e] p-6 text-center shadow-md transition hover:-translate-y-2">
+                <div class="mb-4 text-4xl select-none">⛰️</div>
+                <h3 data-i18n="commitment_card3_title" class="mb-3 text-lg font-bold text-[#002B3A] dark:text-white">
+                    Producción de altura
+                </h3>
+                <p data-i18n="commitment_card3_desc" class="text-sm leading-6 text-gray-600 dark:text-gray-300">
+                    Leche de vacunos alimentados en praderas altoandinas a más de 3,800 m s. n. m.
+                </p>
+            </article>
+
+            <article
+                class="rounded-xl bg-white dark:bg-[#1a232e] p-6 text-center shadow-md transition hover:-translate-y-2">
+                <div class="mb-4 text-4xl select-none">📜</div>
+                <h3 data-i18n="commitment_card4_title" class="mb-3 text-lg font-bold text-[#002B3A] dark:text-white">
+                    Registro DIGESA
+                </h3>
+                <p data-i18n="commitment_card4_desc" class="text-sm leading-6 text-gray-600 dark:text-gray-300">
+                    Lotes homogéneos y estandarizados para abastecer comercios e instituciones.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="destacados" class="scroll-mt-4 bg-white dark:bg-[#0f172a] px-6 py-20 transition-colors duration-300">
+    <div class="mx-auto max-w-7xl">
+        <div class="mb-12 flex flex-col items-center justify-between gap-5 md:flex-row">
+            <div>
+                <p data-i18n="prod_sec_tag" class="font-semibold uppercase tracking-widest text-[#C89B3C]">Nuestra
+                    producción</p>
+                <h2 data-i18n="prod_sec_title"
+                    class="mt-2 text-3xl font-bold text-[#002B3A] dark:text-white md:text-4xl">
+                    Derivados Lácteos Destacados
+                </h2>
+            </div>
+            <a href="{{ url_for('contacto') }}" data-i18n="btn_all_catalog"
+                class="rounded-lg border-2 border-[#164E3A] dark:border-[#C89B3C] px-5 py-2 font-semibold text-[#164E3A] dark:text-[#C89B3C] transition hover:bg-[#164E3A] hover:text-white dark:hover:bg-[#C89B3C] dark:hover:text-[#002B3A]">
+                Ver todo el catálogo
+            </a>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+            <article
+                class="overflow-hidden rounded-xl bg-[#F5F0D8] dark:bg-[#1a232e] shadow-md flex flex-col justify-between">
+                <div
+                    class="flex h-48 items-center justify-center text-7xl bg-amber-100 dark:bg-amber-900/40 select-none">🧀</div>
+                <div class="p-5 grow flex flex-col justify-between">
+                    <div>
+                        <h3 data-i18n="prod_paria_title" class="text-xl font-bold text-[#002B3A] dark:text-white">Queso
+                            Paria</h3>
+                        <p data-i18n="prod_paria_desc" class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                            Elaboración tradicional compacta y cremosa, ideal para la gastronomía regional.
+                        </p>
+                    </div>
+                    <a href="{{ url_for('contacto', producto='Queso Paria') }}" data-i18n="btn_quote"
+                        class="mt-4 block text-center rounded bg-[#164E3A] py-2 text-xs font-semibold text-white hover:bg-[#002B3A] dark:bg-[#C89B3C] dark:text-[#002B3A] dark:hover:bg-yellow-400">
+                        Cotizar
+                    </a>
+                </div>
+            </article>
+
+            <article
+                class="overflow-hidden rounded-xl bg-[#F5F0D8] dark:bg-[#1a232e] shadow-md flex flex-col justify-between">
+                <div
+                    class="flex h-48 items-center justify-center text-7xl bg-amber-100 dark:bg-amber-900/40 select-none">🧀</div>
+                <div class="p-5 grow flex flex-col justify-between">
+                    <div>
+                        <h3 data-i18n="prod_andino_title" class="text-xl font-bold text-[#002B3A] dark:text-white">Queso
+                            Andino</h3>
+                        <p data-i18n="prod_andino_desc" class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                            Queso madurado de textura suave y sabor característico de los Andes.
+                        </p>
+                    </div>
+                    <a href="{{ url_for('contacto', producto='Queso Andino') }}" data-i18n="btn_quote"
+                        class="mt-4 block text-center rounded bg-[#164E3A] py-2 text-xs font-semibold text-white hover:bg-[#002B3A] dark:bg-[#C89B3C] dark:text-[#002B3A] dark:hover:bg-yellow-400">
+                        Cotizar
+                    </a>
+                </div>
+            </article>
+
+            <article
+                class="overflow-hidden rounded-xl bg-[#F5F0D8] dark:bg-[#1a232e] shadow-md flex flex-col justify-between">
+                <div
+                    class="flex h-48 items-center justify-center text-7xl bg-amber-100 dark:bg-amber-900/40 select-none">🧀</div>
+                <div class="p-5 grow flex flex-col justify-between">
+                    <div>
+                        <h3 data-i18n="prod_gouda_title" class="text-xl font-bold text-[#002B3A] dark:text-white">Queso
+                            Tipo Gouda</h3>
+                        <p data-i18n="prod_gouda_desc" class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                            Propuesta semidura especial para cortes, tablas gourmet y distribución mayorista.
+                        </p>
+                    </div>
+                    <a href="{{ url_for('contacto', producto='Queso Gouda') }}" data-i18n="btn_quote"
+                        class="mt-4 block text-center rounded bg-[#164E3A] py-2 text-xs font-semibold text-white hover:bg-[#002B3A] dark:bg-[#C89B3C] dark:text-[#002B3A] dark:hover:bg-yellow-400">
+                        Cotizar
+                    </a>
+                </div>
+            </article>
+
+            <article
+                class="overflow-hidden rounded-xl bg-[#F5F0D8] dark:bg-[#1a232e] shadow-md flex flex-col justify-between">
+                <div
+                    class="flex h-48 items-center justify-center text-7xl bg-amber-100 dark:bg-amber-900/40 select-none">🧈</div>
+                <div class="p-5 grow flex flex-col justify-between">
+                    <div>
+                        <h3 data-i18n="prod_mantequilla_title" class="text-xl font-bold text-[#002B3A] dark:text-white">
+                            Mantequilla Artesanal</h3>
+                        <p data-i18n="prod_mantequilla_desc"
+                            class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">
+                            Obtenida a partir del batido natural de la crema de leche fresca pura.
+                        </p>
+                    </div>
+                    <a href="{{ url_for('contacto', producto='Mantequilla') }}" data-i18n="btn_quote"
+                        class="mt-4 block text-center rounded bg-[#164E3A] py-2 text-xs font-semibold text-white hover:bg-[#002B3A] dark:bg-[#C89B3C] dark:text-[#002B3A] dark:hover:bg-yellow-400">
+                        Cotizar
+                    </a>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#164E3A] px-6 py-20 text-white">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
+        <div
+            class="flex min-h-80 items-center justify-center rounded-2xl bg-white/10 text-8xl shadow-inner border border-white/20 select-none">
+            🏭
+        </div>
+        <div>
+            <p data-i18n="assoc_tag" class="text-sm font-semibold uppercase tracking-widest text-[#C89B3C]">Asociación
+                Formalizada</p>
+            <h2 data-i18n="assoc_title" class="mt-2 text-3xl font-bold md:text-4xl">Asociación Don Lorenzo de Samán</h2>
+            <p data-i18n="assoc_desc" class="mt-4 leading-7 text-gray-200">
+                Somos una organización formalizada (RUC 20606101423) ubicada en la comunidad de Llacta Cucho Puto Punco
+                en Azángaro, Puno. Articulamos el esfuerzo diario de más de 80 familias ganaderas para ofrecer productos
+                lácteos de máxima inocuidad.
+            </p>
+            <ul class="mt-6 space-y-3 text-sm text-gray-200">
+                <li class="flex items-center gap-3">
+                    <span class="text-[#C89B3C]">✓</span>
+                    <span data-i18n="assoc_item1">Registro Sanitario DIGESA y Facturación Electrónica.</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="text-[#C89B3C]">✓</span>
+                    <span data-i18n="assoc_item2">Habilitación para Comercio Exterior (Importación /
+                        Exportación).</span>
+                </li>
+                <li class="flex items-center gap-3">
+                    <span class="text-[#C89B3C]">✓</span>
+                    <span data-i18n="assoc_item3">Soporte técnico a ganaderos con siembra de alfalfa, avena y
+                        ensilaje.</span>
+                </li>
+            </ul>
+            <div class="mt-8">
+                <a href="{{ url_for('contacto') }}" data-i18n="btn_contact_board"
+                    class="inline-block rounded-lg bg-[#C89B3C] px-6 py-3 font-semibold text-[#002B3A] transition hover:bg-yellow-400">
+                    Contactar con la Directiva
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#F5F0D8] dark:bg-[#12181f] px-6 py-20 transition-colors duration-300">
+    <div class="mx-auto max-w-7xl text-center">
+        <p data-i18n="coverage_tag" class="font-semibold uppercase tracking-widest text-[#C89B3C]">Cobertura y Cadena de
+            Frío</p>
+        <h2 data-i18n="coverage_title" class="mt-2 text-3xl font-bold text-[#002B3A] dark:text-white md:text-4xl">
+            Llegamos a Mercados Regionales y Nacionales
+        </h2>
+        <p data-i18n="coverage_desc" class="mx-auto mt-4 max-w-2xl text-gray-700 dark:text-gray-300">
+            Con logística refrigerada propia atendemos a distribuidores mayoristas y licitaciones del sector público en
+            programas sociales como Qali Warma y Vaso de Leche.
+        </p>
+
+        <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="rounded-xl bg-white dark:bg-[#1a232e] p-6 shadow border border-gray-200 dark:border-gray-700">
+                <div class="text-3xl font-bold text-[#164E3A] dark:text-[#C89B3C]">Juliaca</div>
+                <p data-i18n="coverage_juliaca_desc" class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                    Centro logístico principal de acopio y despacho refrigerado.
+                </p>
+            </div>
+            <div class="rounded-xl bg-white dark:bg-[#1a232e] p-6 shadow border border-gray-200 dark:border-gray-700">
+                <div class="text-3xl font-bold text-[#164E3A] dark:text-[#C89B3C]">Puno</div>
+                <p data-i18n="coverage_puno_desc" class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                    Distribución regular para el comercio regional.
+                </p>
+            </div>
+            <div class="rounded-xl bg-white dark:bg-[#1a232e] p-6 shadow border border-gray-200 dark:border-gray-700">
+                <div class="text-3xl font-bold text-[#164E3A] dark:text-[#C89B3C]">Cusco</div>
+                <p data-i18n="coverage_cusco_desc" class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                    Abastecimiento a mercados tradicionales y sector horeca.
+                </p>
+            </div>
+            <div class="rounded-xl bg-white dark:bg-[#1a232e] p-6 shadow border border-gray-200 dark:border-gray-700">
+                <div class="text-3xl font-bold text-[#164E3A] dark:text-[#C89B3C]">Arequipa</div>
+                <p data-i18n="coverage_arequipa_desc" class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                    Envío masivo para red de clientes mayoristas.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-[#002B3A] dark:bg-[#0a121d] px-6 py-16 text-center text-white">
+    <div class="mx-auto max-w-3xl">
+        <h2 data-i18n="cta_title" class="text-3xl font-bold md:text-4xl">¿Listo para cotizar tu pedido?</h2>
+        <p data-i18n="cta_desc" class="mt-4 text-gray-300">
+            Cuéntanos qué producto necesitas y la cantidad aproximada; te enviaremos el catálogo de precios al por mayor.
+        </p>
+        <a href="{{ url_for('contacto') }}" data-i18n="cta_btn"
+            class="mt-8 inline-block rounded-lg bg-[#C89B3C] px-8 py-3 font-semibold text-[#002B3A] shadow-lg transition hover:scale-105 hover:bg-yellow-400">
+            Ir al formulario de contacto
+        </a>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/slider.js') }}"></script>
+
+{% endblock %}

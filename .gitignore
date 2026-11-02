@@ -1,0 +1,21 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# --- Python e Inteligencia del Entorno ---
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# --- Variables de Entorno y Credenciales Secretas ---
+.env
+.env.local
+
+# --- Dependencias de Node.js / JavaScript ---
+node_modules/
+
+# --- Archivos del Editor y del Sistema Operativo ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+
